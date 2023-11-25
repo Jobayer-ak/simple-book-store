@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Card from './Card';
-import fetchBooks from '../redux/books/thunk/fetchBooks';
+import fetchBooksThunk from '../redux/books/thunk/fetchBooksThunk';
 
 function CardList() {
   const books = useSelector((state) => state);
@@ -9,7 +9,7 @@ function CardList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchBooks);
+    dispatch(fetchBooksThunk);
   }, [dispatch]);
 
   //   console.log(books);

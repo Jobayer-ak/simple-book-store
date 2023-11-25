@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 function Card({ book }) {
-  console.log('book: ', book);
+//   console.log('book: ', book);
 
   const { id, author, feature, name, price, rating, thumbnail } = book;
 

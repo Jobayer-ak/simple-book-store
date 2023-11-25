@@ -3,11 +3,11 @@
 
 import { loaded } from "../actions";
 
-const fetchBooks = async(dispatch, getState) => {
+const fetchBooksThunk = async(dispatch, getState) => {
     const response = await fetch("http://localhost:5000/books");
     const books = await response.json();
 
     dispatch(loaded(books))
 }
 
-export default fetchBooks
+export default fetchBooksThunk

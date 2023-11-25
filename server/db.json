@@ -26,6 +26,15 @@
       "rating": 4,
       "featured": true,
       "id": 4
+    },
+    {
+      "author": "Alice R. Howthorne",
+      "name": "Th",
+      "featured": true,
+      "price": 1500,
+      "rating": 5,
+      "thumbnail": "https://static.toiimg.com/photo/102450170.cms",
+      "id": 5
     }
   ]
 }
