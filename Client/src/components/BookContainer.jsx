@@ -1,5 +1,5 @@
 import AddBookForm from "./AddBookForm";
-import Card from "./Card";
+import CardList from "./CardList";
 
 function BookContainer() {
   return (
@@ -13,9 +13,9 @@ function BookContainer() {
             <button className="filter-btn" id="lws-filterFeatured">Featured</button>
           </div>
         </div>
-        <div className="lws-bookContainer">
+        <div className="">
           {/* Book Card */}
-          <Card/>
+          <CardList/>
         </div>
       </div>
           {/* Add Book Form */}

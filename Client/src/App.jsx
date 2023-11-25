@@ -6,7 +6,7 @@ function App() {
 
 
   return (
-    <div className="mx-40">
+    <div className="">
       <Navbar />
       <BookContainer/>
         
