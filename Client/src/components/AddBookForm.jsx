@@ -1,12 +1,13 @@
-import { useState } from 'react';
+/* eslint-disable react/prop-types */
+
 import { useDispatch } from 'react-redux';
 import addBookThunk from '../redux/books/thunk/addBookThunk';
+import updateBookThunk from '../redux/books/thunk/updateBookThunk';
+import { useEffect, useState } from 'react';
 
-function AddBookForm() {
+function AddBookForm({ isUpdate, setIsUpdate }) {
   const dispatch = useDispatch();
 
-
-    
   const [input, setInput] = useState({
     name: '',
     author: '',
@@ -16,12 +17,38 @@ function AddBookForm() {
     featured: false,
   });
 
-  const handleForm = (e) => {
+  
+
+  useEffect(() => {
+    if (isUpdate) {
+      setInput(isUpdate);
+    }
+  }, [isUpdate]);
+
+  const submitHandler = (e) => {
     e.preventDefault();
 
-      console.log(e.target.elements);
-      
-      dispatch(addBookThunk(input))
+    //   console.log(e.target.elements);
+
+    if (isUpdate) {
+      console.log("updated input: ", input)
+      dispatch(updateBookThunk(input));
+      setIsUpdate(false);
+    } else {
+      dispatch(addBookThunk(input));
+    }
+
+    // form reset 
+    setInput({
+      name: '',
+      author: '',
+      thumbnail: '',
+      price: '',
+      rating: '',
+      featured: false,
+    });
+  
+    
   };
 
   const inputHandler = (fieldName, e) => {
@@ -51,13 +78,13 @@ function AddBookForm() {
     }
   };
 
-    console.log("input fields value: ", input);
+  // console.log('input fields value: ', input);
 
   return (
     <div>
       <div className="p-4 overflow-hidden bg-white shadow-cardShadow rounded-md">
         <h4 className="mb-8 text-xl font-bold text-center">Add New Book</h4>
-        <form className="book-form" onSubmit={(e) => handleForm(e)}>
+        <form className="book-form" onSubmit={(e) => submitHandler(e)}>
           <div className="space-y-2">
             <label htmlFor="name">Book Name</label>
             <input
@@ -66,8 +93,8 @@ function AddBookForm() {
               className="text-input"
               type="text"
               id="input-Bookname"
-                          name="name"
-                          value={input?.name}
+              name="name"
+              value={input?.name}
             />
           </div>
 
@@ -79,8 +106,8 @@ function AddBookForm() {
               className="text-input"
               type="text"
               id="input-Bookauthor"
-                          name="author"
-                          value={input?.author}
+              name="author"
+              value={input?.author}
             />
           </div>
 
@@ -92,8 +119,8 @@ function AddBookForm() {
               className="text-input"
               type="text"
               id="input-Bookthumbnail"
-                          name="thumbnail"
-                          value={input?.thumbnail}
+              name="thumbnail"
+              value={input?.thumbnail}
             />
           </div>
 
@@ -106,8 +133,8 @@ function AddBookForm() {
                 className="text-input"
                 type="number"
                 id="input-Bookprice"
-                              name="price"
-                              value={input?.price}
+                name="price"
+                value={input?.price}
               />
             </div>
 
@@ -121,8 +148,8 @@ function AddBookForm() {
                 id="input-Bookrating"
                 name="rating"
                 min="1"
-                              max="5"
-                              value={input?.rating}
+                max="5"
+                value={input?.rating}
               />
             </div>
           </div>
@@ -133,17 +160,16 @@ function AddBookForm() {
               id="input-Bookfeatured"
               type="checkbox"
               name="featured"
-                          className="w-4 h-4"
-                          checked={input?.featured}
+              className="w-4 h-4"
+              checked={input?.featured}
             />
             <label htmlFor="featured" className="ml-2 text-sm">
-              {' '}
-              This is a featured book{' '}
+              This is a featured book
             </label>
           </div>
 
           <button type="submit" className="submit" id="submit">
-            Add Book
+            {isUpdate ? 'Update Book' : 'Add Book'}
           </button>
         </form>
       </div>

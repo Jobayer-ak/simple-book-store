@@ -16,13 +16,10 @@ export const added = (bookInfo) => {
   };
 };
 
-export const updated = (bookId, bookInfo) => {
+export const updated = (bookInfo) => {
   return {
     type: UPDATEBOOK,
-    payload: {
-      bookId,
-      bookInfo,
-    },
+    payload: bookInfo,
   };
 };
 
