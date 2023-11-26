@@ -25,15 +25,15 @@
       "price": 23.99,
       "rating": 4,
       "featured": true,
-      "id": 4
+      "id": 3
     },
     {
-      "author": "Alice R. Howthorne",
-      "name": "The Enigma of time",
+      "author": "By Harry. H. Chaudhary.",
+      "name": "Head First C++",
       "featured": true,
-      "price": 15,
+      "price": 20,
       "rating": 5,
-      "thumbnail": "https://static.toiimg.com/photo/102450170.cms",
+      "thumbnail": "https://books.google.com.bd/books/publisher/content?id=-xzlAwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE70a6KtcIeK5dbhZou86hJxElASF9vZ5kUzf-jYllaDwn4f8bxgrwBiGCYirg_PE40es7NCr2bDUMnVkrGacYxpETPWl7VymLL8sxy4w9juhc8zybxDKyDICgP1hGNoYhK3RWtvU",
       "id": 5
     }
   ]
