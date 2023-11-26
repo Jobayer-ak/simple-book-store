@@ -1,4 +1,17 @@
-function Navbar() {
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
+
+function Navbar({ setSearchText }) {
+  const [inputValue, setInputValue] = useState("");
+  
+
+  useEffect(() => {
+    setSearchText(inputValue);
+  })
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  }
+  
   return (
     <nav className="py-4 2xl:px-6">
       <div className="container flex items-center justify-between">
@@ -30,6 +43,8 @@ function Navbar() {
               placeholder="Filter books..."
               className="search"
               id="lws-searchBook"
+              value={inputValue}
+              onChange={handleInputChange}
             />
           </div>
         </form>
