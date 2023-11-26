@@ -26,6 +26,8 @@ function Card({ setIsUpdate, book }) {
     );
   }
 
+  
+
   const deleteHandler = () => {
     console.log("book Id for delte: ", id);
     dispatch(deleteBookThunk(id));

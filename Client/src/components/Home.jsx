@@ -4,18 +4,29 @@ import { useSelector, useDispatch } from 'react-redux';
 import fetchBooksThunk from '../redux/books/thunk/fetchBooksThunk';
 import Card from './Card';
 
-function BookContainer() {
+function Home() {
   const [isUpdate, setIsUpdate] = useState(false);
+  const [filterBook, setFilterbook] = useState(false);
 
   const books = useSelector((state) => state);
 
   const dispatch = useDispatch();
 
-  console.log("status update: ", isUpdate);
+  console.log('status update: ', isUpdate);
 
   useEffect(() => {
     dispatch(fetchBooksThunk);
   }, [dispatch]);
+
+  // filtering books
+  const handlefilterBook = (book) => {
+    // console.log("filter handler; ", book);
+    if (filterBook) {
+      return book.featured;
+    } else {
+      return true;
+    }
+  };
 
   return (
     <div className="container grid xl:grid-cols-[auto_350px] 2xl:grid-cols-[auto_400px] gap-4 2xl:gap-8">
@@ -24,10 +35,18 @@ function BookContainer() {
           <h4 className="mt-2 text-xl font-bold">Book List</h4>
 
           <div className="flex items-center space-x-4">
-            <button className="filter-btn active-filter" id="lws-filterAll">
+            <button
+              className="filter-btn filter-btn focus:bg-sky-500"
+              id="lws-filterAll"
+              onClick={() => setFilterbook(false)}
+            >
               All
             </button>
-            <button className="filter-btn" id="lws-filterFeatured">
+            <button
+              className="filter-btn focus:bg-sky-500"
+              id="lws-filterFeatured"
+              onClick={() => setFilterbook(true)}
+            >
               Featured
             </button>
           </div>
@@ -35,7 +54,7 @@ function BookContainer() {
         <div className="lws-bookContainer gap-4">
           {/* Book Card */}
           {books.length >= 1
-            ? books?.map((book, index) => (
+            ? books?.filter(handlefilterBook).map((book, index) => (
                 <Card setIsUpdate={setIsUpdate} book={book} key={index} />
               ))
             : 'No Book Found'}
@@ -47,4 +66,4 @@ function BookContainer() {
   );
 }
 
-export default BookContainer;
+export default Home;
